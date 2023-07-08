@@ -11,6 +11,7 @@
 		CA501A942A59FA6400DC231A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA501A932A59FA6400DC231A /* ContentView.swift */; };
 		CA501A962A59FA6600DC231A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA501A952A59FA6600DC231A /* Assets.xcassets */; };
 		CA501A992A59FA6600DC231A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA501A982A59FA6600DC231A /* Preview Assets.xcassets */; };
+		CA501AA02A5A025F00DC231A /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA501A9F2A5A025F00DC231A /* CustomColors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		CA501A932A59FA6400DC231A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CA501A952A59FA6600DC231A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA501A982A59FA6600DC231A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CA501A9F2A5A025F00DC231A /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				CA501A912A59FA6400DC231A /* RestaurantApp.swift */,
 				CA501A932A59FA6400DC231A /* ContentView.swift */,
+				CA501A9F2A5A025F00DC231A /* CustomColors.swift */,
 				CA501A952A59FA6600DC231A /* Assets.xcassets */,
 				CA501A972A59FA6600DC231A /* Preview Content */,
 			);
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA501A942A59FA6400DC231A /* ContentView.swift in Sources */,
+				CA501AA02A5A025F00DC231A /* CustomColors.swift in Sources */,
 				CA501A922A59FA6400DC231A /* RestaurantApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
