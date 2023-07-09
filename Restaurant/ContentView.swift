@@ -12,7 +12,7 @@ struct ContentView: View {
                     Image("podKastielomLogo")
                         .resizable()
                         .frame(width: 60, height: 60)
-                        .padding(.leading, 10)
+                        .padding(.leading, 20)
                     
                     Spacer()
                     
@@ -44,7 +44,7 @@ struct ContentView: View {
                     .background(CustomColors.navigationColor)
                 )
                 .padding(.bottom, -5)
-                .padding(.top, -20)
+                .padding(.top, -25)
                 
                 Color("typicalColor")
                     .background()
