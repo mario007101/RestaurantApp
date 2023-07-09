@@ -2,12 +2,13 @@ import SwiftUI
 
 struct ContentView: View {
     @State var selectedTab = "Home"
-    @State private var isClicked = false
-    @Namespace var animation
+
     
     var body: some View {
         ZStack(alignment: .topTrailing) {
+            
             VStack{
+                
                 HStack {
                     Image("podKastielomLogo")
                         .resizable()
@@ -17,7 +18,6 @@ struct ContentView: View {
                     Spacer()
                     
                     Button(action: {
-                        isClicked = true
                     }, label: {
                         Image(systemName: "circle.grid.2x2")
                             .font(.title2)
@@ -29,7 +29,9 @@ struct ContentView: View {
                 }
                 .background(CustomColors.navigationColor)
                 .overlay(
+                    
                     HStack(spacing: 4) {
+                        
                         Image(systemName: "map")
                             .resizable()
                             .renderingMode(.template)
@@ -46,24 +48,43 @@ struct ContentView: View {
                 .padding(.bottom, -5)
                 .padding(.top, -25)
                 
+                HStack(spacing: 20) {
+                    
+                    VStack(alignment: .leading, spacing: 5, content: {
+                        (
+                            Text("Rýchle doručenie objednávok ")
+                            +
+                            Text("jedla")
+                                .foregroundColor(CustomColors.typicalColor)
+                        )
+                        .font(.title)
+                        .fontWeight(.bold)
+                        
+                        Button(action: {}, label: {
+                            Text("Objednať")
+                                .font(.footnote)
+                                .fontWeight(.semibold)
+                                .foregroundColor(.white)
+                                .padding(.vertical, 10)
+                                .padding(.horizontal)
+                                .background(Color.indigo)
+                                .clipShape(Capsule())
+                        })
+                    })
+                    .padding(.leading)
+                    
+                    Spacer(minLength: 0)
+                    
+                }
+                .padding()
+                .background(CustomColors.navigationColor)
+                .cornerRadius(8.0)
+                .padding(.horizontal)
+                
+                
                 Color("typicalColor")
                     .background()
                     .ignoresSafeArea()
-            }
-            if isClicked == true {
-                
-                VStack(content: {
-                    VStack(alignment: .trailing, spacing: 0) {
-                        TabMenu(image: "house", title: "Úvod", selectedTab: $selectedTab, animation: animation)
-                        TabMenu(image: "house", title: "Špeciálne akcie", selectedTab: $selectedTab, animation: animation)
-                        TabMenu(image: "house", title: "Denné menu", selectedTab: $selectedTab, animation: animation)
-                        TabMenu(image: "fork.knife", title: "Jedálny lístok", selectedTab: $selectedTab, animation: animation)
-                        TabMenu(image: "photo.artframe", title: "Fotogaléria", selectedTab: $selectedTab, animation: animation)
-                        TabMenu(image: "phone", title: "Kontakt", selectedTab: $selectedTab, animation: animation)
-                    }
-                    .padding(.top, 70)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
-                })
             }
         }
     }
