@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var isClicked = false
     
     var body: some View {
         ZStack(alignment: .topTrailing) {
@@ -8,16 +9,22 @@ struct ContentView: View {
             VStack{
                 
                 HStack {
-                    TopBar()
+                    TopBar(isClicked: $isClicked)
                 }
                 
-                VStack {
-                    FixedView()
-                        .padding(.top)
-                    
-                    Spacer()
+                VStack{
+                    Start()
                 }
                 
+                if isClicked {
+                    VStack {
+                        FixedView()
+                            .padding(.top)
+                        Spacer()
+                    }
+                }
+                
+                                
             }.background(Color("typicalColor")).ignoresSafeArea()
         }
     }

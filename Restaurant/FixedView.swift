@@ -1,7 +1,8 @@
 import SwiftUI
 
-struct FixedView: View {
+struct FixedView: View {    
     var body: some View {
+        
         HStack(spacing: 20) {
             
             VStack(alignment: .leading, spacing: 5, content: {
@@ -14,7 +15,7 @@ struct FixedView: View {
                 .font(.title)
                 .fontWeight(.bold)
                 
-                Button(action: {}, label: {
+                Button(action: {  }, label: {
                     Text("Objednať")
                         .font(.footnote)
                         .fontWeight(.semibold)
@@ -36,6 +37,12 @@ struct FixedView: View {
         .background(CustomColors.navigationColor)
         .cornerRadius(8.0)
         .padding(.horizontal)
+        
+        Text("Kategórie")
+            .font(.title2)
+            .fontWeight(.bold)
+            .padding()
+            .padding(.top, -20)
     }
 }
 
