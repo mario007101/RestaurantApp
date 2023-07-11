@@ -1,6 +1,7 @@
 import SwiftUI
 
-struct FixedView: View {    
+struct FixedView: View {
+    
     var body: some View {
         
         HStack(spacing: 20) {

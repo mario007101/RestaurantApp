@@ -11,20 +11,19 @@ struct ContentView: View {
                 HStack {
                     TopBar(isClicked: $isClicked)
                 }
-                
-                VStack{
-                    Start()
-                }
-                
-                if isClicked {
+ 
+                if isClicked == false {
                     VStack {
                         FixedView()
                             .padding(.top)
                         Spacer()
                     }
+                } else {
+                    VStack{
+                        Start()
+                    }
                 }
                 
-                                
             }.background(Color("typicalColor")).ignoresSafeArea()
         }
     }
