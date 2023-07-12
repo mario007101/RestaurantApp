@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct FixedView: View {
+struct FixedView: View {   
     
     var body: some View {
         
@@ -44,6 +44,35 @@ struct FixedView: View {
             .fontWeight(.bold)
             .padding()
             .padding(.top, -20)
+        
+        ScrollView(.horizontal, showsIndicators: false, content: {
+            
+            HStack(spacing: 15) {
+                
+                ForEach(categories) { category in
+                    
+                    HStack(spacing: 10) {
+                        
+                        Image(systemName: category.image)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 15, height: 15)
+                            .padding(6)
+                            .background(Color.white)
+                            .clipShape(Circle())
+                        
+                        Text(category.title)
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                    }
+                    .padding(.vertical, 12)
+                    .padding(.horizontal)
+                    .padding(.leading, 2)
+                    .background(CustomColors.navigationColor)
+                    .clipShape(Capsule())
+                }
+            }
+        })
     }
 }
 
