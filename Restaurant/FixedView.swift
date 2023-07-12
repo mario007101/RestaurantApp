@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct FixedView: View {   
-    
+    @State var selectedCategory: Category = categories.first!
     var body: some View {
         
         HStack(spacing: 20) {
@@ -58,21 +58,26 @@ struct FixedView: View {
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 15, height: 15)
                             .padding(6)
-                            .background(Color.white)
+                            .background(selectedCategory.id == category.id ? Color.white : Color.clear)
                             .clipShape(Circle())
                         
                         Text(category.title)
                             .fontWeight(.bold)
-                            .foregroundColor(.white)
+                            .foregroundColor(selectedCategory.id == category.id ? .white : .black)
                     }
                     .padding(.vertical, 12)
                     .padding(.horizontal)
                     .padding(.leading, 2)
-                    .background(CustomColors.navigationColor)
+                    .background(selectedCategory.id == category.id ? CustomColors.navigationColor : Color.gray.opacity(0.3))
                     .clipShape(Capsule())
+                    .onTapGesture{
+                        withAnimation(.spring()){
+                            selectedCategory = category
+                        }
+                    }
                 }
             }
-        })
+        }).padding(.leading, 20)
     }
 }
 
