@@ -44,7 +44,7 @@ struct FixedView: View {
                 .font(.title2)
                 .fontWeight(.bold)
                 .padding()
-                .padding(.top, -20)
+                .padding(.top, 0)
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 15) {
@@ -80,16 +80,16 @@ struct FixedView: View {
                                 }
                             }
                         }
-                    }
+                    }.padding(.leading, 10)
                 }
             }
             
             if contact {
-                HStack {
+                VStack(alignment: .leading) {
                     Text("New HStack Content")
                 }
                 .padding()
-                .background(Color.green)
+                .background(CustomColors.navigationColor)
                 .cornerRadius(8.0)
                 .padding()
             } else if mainMenu {
@@ -97,7 +97,7 @@ struct FixedView: View {
                     Text("New HStack Contents")
                 }
                 .padding()
-                .background(Color.green)
+                .background(CustomColors.navigationColor)
                 .cornerRadius(8.0)
                 .padding()
             }
