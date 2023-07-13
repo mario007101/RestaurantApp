@@ -93,8 +93,9 @@ struct FixedView: View {
                 .cornerRadius(8.0)
                 .padding()
             } else if mainMenu {
-                HStack {
+                VStack(alignment: .leading) {
                     Text("New HStack Contents")
+                        
                 }
                 .padding()
                 .background(CustomColors.navigationColor)
