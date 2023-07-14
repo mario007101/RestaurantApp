@@ -21,6 +21,7 @@
 		CA501A962A59FA6600DC231A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA501A952A59FA6600DC231A /* Assets.xcassets */; };
 		CA501A992A59FA6600DC231A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA501A982A59FA6600DC231A /* Preview Assets.xcassets */; };
 		CA501AA02A5A025F00DC231A /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA501A9F2A5A025F00DC231A /* CustomColors.swift */; };
+		CAF4F9312A61F415001593A5 /* MainCardItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF4F9302A61F415001593A5 /* MainCardItems.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		CA501A952A59FA6600DC231A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA501A982A59FA6600DC231A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CA501A9F2A5A025F00DC231A /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
+		CAF4F9302A61F415001593A5 /* MainCardItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardItems.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				CA0C108D2A5C799300069237 /* Contact.swift */,
 				CA0C10812A5C77AF00069237 /* TopBar.swift */,
 				CA0C107D2A5C730600069237 /* FixedView.swift */,
+				CAF4F9302A61F415001593A5 /* MainCardItems.swift */,
 				CA37D3472A5F40CA00901CC9 /* Category.swift */,
 				CA501A9F2A5A025F00DC231A /* CustomColors.swift */,
 				CA501A952A59FA6600DC231A /* Assets.xcassets */,
@@ -167,6 +170,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAF4F9312A61F415001593A5 /* MainCardItems.swift in Sources */,
 				CA501A942A59FA6400DC231A /* ContentView.swift in Sources */,
 				CA0C107E2A5C730600069237 /* FixedView.swift in Sources */,
 				CA0C10882A5C796800069237 /* DailyMenu.swift in Sources */,
