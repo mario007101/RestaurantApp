@@ -3,16 +3,19 @@ import SwiftUI
 struct Items: Identifiable {
     let id = UUID()
     let name: String
+    let price: Double
     
     var items: [Items]?
 }
 
 struct MainCardItems: View {
-    let allPizzas: [Items] = [.pizzaStick]
+    let allPizzas: [Items] = [.pizzas]
+    
     var body: some View {
         ZStack {
             List(allPizzas, children: \.items) { item in
                 Text(item.name)
+                Text("\(item.price, specifier: "%.2f") €").padding(.leading, 90)
             }
             .environment(\.defaultMinListRowHeight, 50)
             .environment(\.defaultMinListHeaderHeight, 45)
@@ -34,8 +37,8 @@ struct MainCardItems_Previews: PreviewProvider {
 }
 
 extension Items {
-    static let pizzaStick = Items(name: "Pizza tyčinky")
+    static let pizzaStick = Items(name: "Pizza tyčinky", price: 3.8)
+    static let margharita = Items(name: "Margharita", price: 5.5)
     
-    
-    static let pizza = Items(name: "Pizza", items: [Items.pizzaStick])
+    static let pizzas = Items(name: "Pizza", price: 0.0, items: [Items.margharita, Items.pizzaStick])
 }

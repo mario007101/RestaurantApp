@@ -94,8 +94,7 @@ struct FixedView: View {
                 .padding()
             } else if mainMenu {
                 VStack(alignment: .leading) {
-                    Text("New HStack Contents")
-                        
+                    MainCardItems()                        
                 }
                 .padding()
                 .background(CustomColors.navigationColor)
