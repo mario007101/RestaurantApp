@@ -10,53 +10,91 @@ struct Items: Identifiable, Equatable {
 
 struct MainCardItems: View {
     let allPizzas: [Items] = [.pizzaStick, .margharita, .sunkova, .funghi, .cardinala, .ungarese]
-    let topPizzas: [Items] = [] // Have to finish
+    let topPizzas: [Items] = [] // Have to finish this
 
     @State private var selectedPizza: Items? = nil
-
+    @State var selectedCategory: Category = topPizza.first!
+    
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading) {
-                ForEach(allPizzas) { item in
-                    VStack {
-                        HStack {
-                            Text("\(item.name) (\(item.gram)g)")
-                            Spacer()
-                            Text("\(item.price, specifier: "%.2f") €").foregroundColor(CustomColors.typicalColor)
-
-                            Button(action: {
-                                withAnimation {
-                                    selectedPizza = (selectedPizza == item) ? nil : item
-                                }
-                            }) {
-                                Image(systemName: selectedPizza == item ? "chevron.down" : "chevron.right")
-                                    .foregroundColor(.white)
-                            }
-                        }
-                        .padding(.horizontal)
-                        .bold()
-                        .font(.title2)
-                       
-
-                        if selectedPizza == item {
-                            ForEach(item.ingredients, id: \.self) { ingredient in
+            VStack {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 15) {
+                        ForEach(topPizza) { pizza in
+                            HStack(spacing: 10) {
+                                Image(systemName: pizza.image)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 15, height: 15)
+                                    .padding(6)
+                                    .background(selectedCategory.id == pizza.id ? Color.white : Color.clear)
+                                    .clipShape(Circle())
                                 
-                                Text(ingredient)
-                                    .foregroundColor(CustomColors.typicalColor)
-                                    .padding(.leading, -140)
-                                    .bold()
+                                Text(pizza.title)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(selectedCategory.id == pizza.id ? .white : .black)
+                            }
+                            .padding(.vertical, 12)
+                            .padding(.horizontal)
+                            .padding(.leading, 2)
+                            .background(selectedCategory.id == pizza.id ? CustomColors.navigationColor : Color.gray.opacity(0.3))
+                            .clipShape(Capsule())
+                            .overlay(
+                                Capsule()
+                                    .stroke(Color.black, lineWidth: 1)
+                            )
+                            .onTapGesture {
+                                withAnimation(.spring()) {
+                                    selectedCategory = pizza
+                                }
                             }
                         }
-                        Divider()
+                    }
+                    .padding(2)
+                }
+
+            
+            ScrollView {
+                VStack(alignment: .leading) {
+                    ForEach(allPizzas) { item in
+                        VStack {
+                            HStack {
+                                Text("\(item.name) (\(item.gram)g)")
+                                Spacer()
+                                Text("\(item.price, specifier: "%.2f") €").foregroundColor(CustomColors.typicalColor)
+                                
+                                Button(action: {
+                                    withAnimation {
+                                        selectedPizza = (selectedPizza == item) ? nil : item
+                                    }
+                                }) {
+                                    Image(systemName: selectedPizza == item ? "chevron.down" : "chevron.right")
+                                        .foregroundColor(.white)
+                                }
+                            }
+                            .padding(.horizontal)
+                            .bold()
+                            .font(.title2)
+                            
+                            
+                            if selectedPizza == item {
+                                ForEach(item.ingredients, id: \.self) { ingredient in
+                                    
+                                    Text(ingredient)
+                                        .foregroundColor(CustomColors.typicalColor)
+                                        .padding(.leading, -140)
+                                        .bold()
+                                }
+                            }
+                            Divider()
+                        }
                     }
                 }
+            }.frame(height:200)
+            .background {
+                CustomColors.navigationColor
+                    .ignoresSafeArea()
             }
         }
-        .background {
-            CustomColors.navigationColor
-                .ignoresSafeArea()
-        }
-        .frame(height: 300)
     }
 }
 
