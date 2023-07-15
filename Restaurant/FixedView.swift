@@ -71,7 +71,7 @@ struct FixedView: View {
                             withAnimation(.spring()) {
                                 selectedCategory = category
                                 
-                                if category.title == "Hlavné jedlá" {
+                                if category.title == "Pizza" {
                                     mainMenu = true
                                     contact = false
                                 } else if category.title == "Kontakt" {
