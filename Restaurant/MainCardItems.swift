@@ -10,13 +10,11 @@ struct Items: Identifiable, Equatable {
 
 struct MainCardItems: View {
     let allPizzas: [Items] = [.pizzaStick, .margharita, .sunkova, .funghi, .cardinala, .ungarese]
-    
-    //These have to finish
     let topPizzas: [Items] = [.margharita, .cardinala]
 
     @State private var selectedPizza: Items? = nil
     @State var selectedCategory: Category = topPizza.first!
-    @State private var isSelectedTopPizza = false
+    @State private var isSelectedTopPizza = 1
     
     var body: some View {
         VStack {
@@ -48,10 +46,10 @@ struct MainCardItems: View {
                         .onTapGesture {
                             withAnimation(.spring()) {
                                 selectedCategory = pizza
-                                if isSelectedTopPizza == false {
-                                   isSelectedTopPizza = true
-                                } else {
-                                    isSelectedTopPizza = false
+                                if (isSelectedTopPizza == 1) && (selectedCategory.title == "Top pizze") {
+                                   isSelectedTopPizza = 2
+                                } else if (isSelectedTopPizza == 2) && (selectedCategory.title == "Všetky pizze") {
+                                    isSelectedTopPizza = 1
                                 }
                             }
                         }
@@ -63,7 +61,7 @@ struct MainCardItems: View {
             
             ScrollView {
                 VStack(alignment: .leading) {
-                    if isSelectedTopPizza == false {
+                    if isSelectedTopPizza == 1 {
                         ForEach(allPizzas) { item in
                             VStack {
                                 
@@ -157,9 +155,9 @@ extension Items {
     static let sunkova = Items(name: "Šunková", gram: 640, price: 5.9, ingredients: ["paradajková omáčka,", "syr,", "šunka"])
     
     //Have to finish these
-    static let funghi = Items(name: "Fungi", gram: 710, price: 6.2, ingredients: ["Ingredient 7", "Ingredient 8"])
-    static let cardinala = Items(name: "Cardinala", gram: 770, price: 6.8, ingredients: ["Ingredient 9", "Ingredient 10"])
-    static let ungarese = Items(name: "Ungarese", gram: 750, price: 7.0, ingredients: ["Ingredient 11", "Ingredient 12"])
+    static let funghi = Items(name: "Fungi", gram: 710, price: 6.2, ingredients: ["paradajková omáčka,", "syr,", "šunka,", "šampióny"])
+    static let cardinala = Items(name: "Cardinala", gram: 770, price: 6.8, ingredients: ["paradajková omáčka,", "syr,", "šunka,", "šampióny,", "kukurica"])
+    static let ungarese = Items(name: "Ungarese", gram: 750, price: 7.0, ingredients: ["paradajková omačka,", "slanina,", "pikantná klobása,", "cibuľa,", "feferóny,", "syr"])
 }
 
 
