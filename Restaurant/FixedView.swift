@@ -4,6 +4,7 @@ struct FixedView: View {
     @State var selectedCategory: Category = categories.first!
     @State var mainMenu = true
     @State var contact = false
+    @State var showReviewMenu = false
     
     var body: some View {
         VStack {
@@ -18,7 +19,11 @@ struct FixedView: View {
                     .font(.title)
                     .fontWeight(.bold)
                     
-                    Button(action: {}, label: {
+                    Button(action: {
+                        withAnimation(.spring()) {
+                            showReviewMenu = true
+                        }
+                    }, label: {
                         Text("Objednať")
                             .font(.footnote)
                             .fontWeight(.semibold)
@@ -74,7 +79,7 @@ struct FixedView: View {
                                 if category.title == "Pizza" {
                                     mainMenu = true
                                     contact = false
-                                } else if category.title == "Kontakt" {
+                                } else if category.title == "Hlavné jedlá" {
                                     contact = true
                                     mainMenu = false
                                 }
@@ -86,7 +91,7 @@ struct FixedView: View {
             
             if contact {
                 VStack(alignment: .leading) {
-                    Text("New HStack Content")
+                    Text("Coming soon...")
                 }
                 .padding()
                 .background(CustomColors.navigationColor)
@@ -94,7 +99,7 @@ struct FixedView: View {
                 .padding()
             } else if mainMenu {
                 VStack(alignment: .leading) {
-                    MainCardItems()                        
+                    MainCardItems()
                 }
                 .padding()
                 .background(CustomColors.navigationColor)
@@ -104,8 +109,12 @@ struct FixedView: View {
             
             Spacer()
         }
+        .fullScreenCover(isPresented: $showReviewMenu, content: {
+            ReviewMenu()
+        })
     }
 }
+
 
 struct FixedView_Previews: PreviewProvider {
     static var previews: some View {

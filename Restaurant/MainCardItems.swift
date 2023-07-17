@@ -10,7 +10,7 @@ struct Items: Identifiable, Equatable {
 
 struct MainCardItems: View {
     let allPizzas: [Items] = [.pizzaStick, .margharita, .sunkova, .funghi, .cardinala, .ungarese]
-    let topPizzas: [Items] = [.margharita, .cardinala]
+    let topPizzas: [Items] = [.margharita, .cardinala, .ungarese]
 
     @State private var selectedPizza: Items? = nil
     @State var selectedCategory: Category = topPizza.first!
@@ -134,7 +134,7 @@ struct MainCardItems: View {
                             }
                         }
                     }
-            }.frame(height:200)}
+            }.frame(height:350)}
             .background {
                 CustomColors.navigationColor
                     .ignoresSafeArea()
@@ -153,8 +153,6 @@ extension Items {
     static let pizzaStick = Items(name: "Pizza tyčinky", gram: 350, price: 3.8, ingredients: ["cesnak,", "olivový olej"])
     static let margharita = Items(name: "Margharita", gram: 580, price: 5.5, ingredients: ["paradajková omáčka,", "syr"])
     static let sunkova = Items(name: "Šunková", gram: 640, price: 5.9, ingredients: ["paradajková omáčka,", "syr,", "šunka"])
-    
-    //Have to finish these
     static let funghi = Items(name: "Fungi", gram: 710, price: 6.2, ingredients: ["paradajková omáčka,", "syr,", "šunka,", "šampióny"])
     static let cardinala = Items(name: "Cardinala", gram: 770, price: 6.8, ingredients: ["paradajková omáčka,", "syr,", "šunka,", "šampióny,", "kukurica"])
     static let ungarese = Items(name: "Ungarese", gram: 750, price: 7.0, ingredients: ["paradajková omačka,", "slanina,", "pikantná klobása,", "cibuľa,", "feferóny,", "syr"])

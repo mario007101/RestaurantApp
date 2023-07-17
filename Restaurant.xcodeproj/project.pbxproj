@@ -16,6 +16,7 @@
 		CA501A962A59FA6600DC231A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA501A952A59FA6600DC231A /* Assets.xcassets */; };
 		CA501A992A59FA6600DC231A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA501A982A59FA6600DC231A /* Preview Assets.xcassets */; };
 		CA501AA02A5A025F00DC231A /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA501A9F2A5A025F00DC231A /* CustomColors.swift */; };
+		CAD76CD32A65CF6C0051EB91 /* ReviewMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD76CD22A65CF6C0051EB91 /* ReviewMenu.swift */; };
 		CAF4F9312A61F415001593A5 /* MainCardItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF4F9302A61F415001593A5 /* MainCardItems.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +31,7 @@
 		CA501A952A59FA6600DC231A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA501A982A59FA6600DC231A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CA501A9F2A5A025F00DC231A /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
+		CAD76CD22A65CF6C0051EB91 /* ReviewMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewMenu.swift; sourceTree = "<group>"; };
 		CAF4F9302A61F415001593A5 /* MainCardItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardItems.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,6 +70,7 @@
 				CA0C10832A5C795200069237 /* Start.swift */,
 				CA0C10812A5C77AF00069237 /* TopBar.swift */,
 				CA0C107D2A5C730600069237 /* FixedView.swift */,
+				CAD76CD22A65CF6C0051EB91 /* ReviewMenu.swift */,
 				CAF4F9302A61F415001593A5 /* MainCardItems.swift */,
 				CA37D3472A5F40CA00901CC9 /* Category.swift */,
 				CA501A9F2A5A025F00DC231A /* CustomColors.swift */,
@@ -162,6 +165,7 @@
 				CA501AA02A5A025F00DC231A /* CustomColors.swift in Sources */,
 				CA0C10842A5C795200069237 /* Start.swift in Sources */,
 				CA501A922A59FA6400DC231A /* RestaurantApp.swift in Sources */,
+				CAD76CD32A65CF6C0051EB91 /* ReviewMenu.swift in Sources */,
 				CA37D3482A5F40CA00901CC9 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

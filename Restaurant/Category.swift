@@ -8,7 +8,7 @@ struct Category: Identifiable {
 
 var categories = [
 Category(image: "fork.knife", title: "Pizza"),
-Category(image: "phone", title: "Kontakt")
+Category(image: "fork.knife.circle.fill", title: "Hlavné jedlá")
 ]
 
 var topPizza = [
