@@ -2,7 +2,7 @@ import SwiftUI
 
 struct Start: View {
     let images = ["aboutUs", "podKastielomLogo"]
-    public let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
+    public let timer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
     @State private var selection = 0
     
     var body: some View {
