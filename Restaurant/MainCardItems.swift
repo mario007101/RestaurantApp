@@ -8,6 +8,10 @@ struct Items: Identifiable, Equatable {
     let ingredients: [String]
 }
 
+struct PizzaCounter {
+    var count = 0
+}
+
 struct MainCardItems: View {
     let allPizzas: [Items] = [.pizzaStick, .margharita, .sunkova, .funghi, .cardinala, .ungarese]
     let topPizzas: [Items] = [.margharita, .cardinala, .ungarese]
@@ -15,6 +19,7 @@ struct MainCardItems: View {
     @State private var selectedPizza: Items? = nil
     @State var selectedCategory: Category = topPizza.first!
     @State private var isSelectedTopPizza = 1
+    @State private var counters: [UUID: PizzaCounter] = [:]
     
     var body: some View {
         VStack {
@@ -81,7 +86,7 @@ struct MainCardItems: View {
                                 }
                                 .padding(.horizontal)
                                 .bold()
-                                .font(.title2)
+                                .font(.title3)
                                 
                                 
                                 if selectedPizza == item {
@@ -91,9 +96,39 @@ struct MainCardItems: View {
                                             .foregroundColor(CustomColors.typicalColor)
                                             .padding(.leading, -140)
                                             .bold()
+                                        
                                     }
+                                    
+                                    HStack {
+                                        Button(action: {
+                                            incrementCounter(for: item)
+                                        }, label: {
+                                            Image(systemName: "plus")
+                                                .frame(width: 20, height: 20)
+                                        })
+                                        .disabled(getCounter(for: item) == 10)
+                                        
+                                        ZStack {
+                                            Rectangle()
+                                                .frame(width: 20, height: 20)
+                                                .cornerRadius(4)
+                                                .foregroundColor(Color.black)
+                                            
+                                            Text("\(getCounter(for: item))")
+                                                .foregroundColor(.white)
+                                        }
+                                        
+                                        Button(action: {
+                                            decrementCounter(for: item)
+                                        }, label: {
+                                            Image(systemName: "minus")
+                                        })
+                                        .disabled(getCounter(for: item) == 0)
+                                    }
+                                    .foregroundColor(Color.white)
+                                    .frame(width: 20, height: 20)
                                 }
-                                
+                                                                
                                 Divider()
                             }
                         }
@@ -102,6 +137,7 @@ struct MainCardItems: View {
                             VStack {
                                 
                                 HStack {
+                                    
                                     Text("\(item.name) (\(item.gram)g)")
                                     Spacer()
                                     Text("\(item.price, specifier: "%.2f") €").foregroundColor(CustomColors.typicalColor)
@@ -117,7 +153,7 @@ struct MainCardItems: View {
                                 }
                                 .padding(.horizontal)
                                 .bold()
-                                .font(.title2)
+                                .font(.title3)
                                 
                                 
                                 if selectedPizza == item {
@@ -127,7 +163,39 @@ struct MainCardItems: View {
                                             .foregroundColor(CustomColors.typicalColor)
                                             .padding(.leading, -140)
                                             .bold()
+                                        
+                                        
                                     }
+                                    
+                                    HStack {
+                                        Button(action: {
+                                            incrementCounter(for: item)
+                                        }, label: {
+                                            Image(systemName: "plus")
+                                                .frame(width: 20, height: 20)
+                                        })
+                                        .disabled(getCounter(for: item) == 10)
+                                        
+                                        ZStack {
+                                            Rectangle()
+                                                .frame(width: 20, height: 20)
+                                                .cornerRadius(4)
+                                                .foregroundColor(Color.black)
+                                            
+                                            Text("\(getCounter(for: item))")
+                                                .foregroundColor(.white)
+                                        }
+                                        
+                                        Button(action: {
+                                            decrementCounter(for: item)
+                                        }, label: {
+                                            Image(systemName: "minus")
+                                        })
+                                        .disabled(getCounter(for: item) == 0)
+                                    }
+                                    .foregroundColor(Color.white)
+                                    .frame(width: 20, height: 20)
+
                                 }
                                 
                                 Divider()
@@ -141,6 +209,37 @@ struct MainCardItems: View {
             }
         }
     }
+    
+    private func incrementCounter(for item: Items) {
+            if let index = allPizzas.firstIndex(of: item) {
+                let itemId = allPizzas[index].id
+                if counters[itemId] == nil {
+                    counters[itemId] = PizzaCounter()
+                }
+                counters[itemId]?.count += 1
+            }
+        }
+        
+        private func decrementCounter(for item: Items) {
+            if let index = allPizzas.firstIndex(of: item) {
+                let itemId = allPizzas[index].id
+                if counters[itemId] == nil {
+                    counters[itemId] = PizzaCounter()
+                }
+                counters[itemId]?.count -= 1
+            }
+        }
+        
+        private func getCounter(for item: Items) -> Int {
+            if let index = allPizzas.firstIndex(of: item) {
+                let itemId = allPizzas[index].id
+                if counters[itemId] == nil {
+                    counters[itemId] = PizzaCounter() 
+                }
+                return counters[itemId]?.count ?? 0
+            }
+            return 0
+        }
 }
 
 struct MainCardItems_Previews: PreviewProvider {

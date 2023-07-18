@@ -23,7 +23,6 @@ struct ContentView: View {
                         Start()
                     }
                 }
-                
             }.background(Color("typicalColor")).ignoresSafeArea()
         }
     }

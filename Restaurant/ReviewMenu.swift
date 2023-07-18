@@ -5,10 +5,12 @@ struct ReviewMenu: View {
     
     var body: some View {
         ZStack{
-            Image("nic")
+            
+            Image("backgroud")
                 .resizable()
                 .ignoresSafeArea()
                 .background(CustomColors.typicalColor)
+            
             Button(action: {
                 presentationMode.wrappedValue.dismiss()
             }, label: {
@@ -18,6 +20,9 @@ struct ReviewMenu: View {
                     .bold()
                     .position(CGPoint(x: 30, y: 0))
             })
+            
+            
+            
         }
     }
 }
