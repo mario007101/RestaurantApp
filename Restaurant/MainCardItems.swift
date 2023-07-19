@@ -14,7 +14,7 @@ struct PizzaCounter {
 
 struct MainCardItems: View {
     let allPizzas: [Items] = [.pizzaStick, .margharita, .sunkova, .funghi, .cardinala, .ungarese]
-    let topPizzas: [Items] = [.margharita, .cardinala, .ungarese]
+    let topPizzas: [Items] = [.margharita, .cardinala, .ungarese, .sunkova]
 
     @State private var selectedPizza: Items? = nil
     @State var selectedCategory: Category = topPizza.first!
