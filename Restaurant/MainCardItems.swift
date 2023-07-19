@@ -248,6 +248,7 @@ struct MainCardItems_Previews: PreviewProvider {
     }
 }
 
+//Have to add some more items
 extension Items {
     static let pizzaStick = Items(name: "Pizza tyčinky", gram: 350, price: 3.8, ingredients: ["cesnak,", "olivový olej"])
     static let margharita = Items(name: "Margharita", gram: 580, price: 5.5, ingredients: ["paradajková omáčka,", "syr"])
