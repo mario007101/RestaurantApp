@@ -20,8 +20,7 @@ struct ReviewMenu: View {
                     .bold()
                     .position(CGPoint(x: 30, y: 0))
             })
-            
-            
+                    
             
         }
     }

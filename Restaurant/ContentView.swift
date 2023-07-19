@@ -10,6 +10,7 @@ struct ContentView: View {
                 
                 HStack {
                     TopBar(isClicked: $isClicked)
+                        
                 }
  
                 if isClicked == false {
