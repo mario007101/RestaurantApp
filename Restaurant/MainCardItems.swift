@@ -10,7 +10,7 @@ struct Items: Identifiable, Equatable {
 
 struct PizzaCounter {
     var count = 0
-    var itemsFromCounter: [String] = []
+    var selectedItems: [String] = []
 }
 
 struct MainCardItems: View {
@@ -21,6 +21,8 @@ struct MainCardItems: View {
     @State var selectedCategory: Category = topPizza.first!
     @State private var isSelectedTopPizza = 1
     @State var counters: [UUID: PizzaCounter] = [:]
+    @State private var selectedPizzaCounter = PizzaCounter()
+    @State private var showReviewMenu = false
     
     var body: some View {
         VStack {
@@ -121,6 +123,7 @@ struct MainCardItems: View {
                                         
                                         Button(action: {
                                             incrementCounter(for: item)
+                                            selectedPizzaCounter.selectedItems.append(item.name)
                                         }, label: {
                                             Image(systemName: "plus")
                                                 .frame(width: 20, height: 20)
@@ -166,10 +169,7 @@ struct MainCardItems: View {
                                             .foregroundColor(CustomColors.typicalColor)
                                             .padding(.leading, -140)
                                             .bold()
-                                        
-                                        
                                     }
-                        
                                     
                                     HStack {
                                         
@@ -197,6 +197,9 @@ struct MainCardItems: View {
                                                 .frame(width: 20, height: 20)
                                         })
                                         .disabled(getCounter(for: item) == 10)
+                                        
+                                        
+                                        
                                     }
                                     .foregroundColor(Color.white)
                                     .frame(width: 20, height: 20)
@@ -212,28 +215,32 @@ struct MainCardItems: View {
                 CustomColors.navigationColor
                     .ignoresSafeArea()
             }
+        }.sheet(isPresented: $showReviewMenu) {
+            ReviewMenu(selectedPizzaCounter: selectedPizzaCounter)
         }
     }
     
+
     private func incrementCounter(for item: Items) {
-            if let index = allPizzas.firstIndex(of: item) {
-                let itemId = allPizzas[index].id
-                if counters[itemId] == nil {
-                    counters[itemId] = PizzaCounter()
+                if let index = allPizzas.firstIndex(of: item) {
+                    let itemId = allPizzas[index].id
+                    if counters[itemId] == nil {
+                        counters[itemId] = PizzaCounter()
+                    }
+                    counters[itemId]?.count += 1
                 }
-                counters[itemId]?.count += 1
             }
-        }
-        
-        private func decrementCounter(for item: Items) {
-            if let index = allPizzas.firstIndex(of: item) {
-                let itemId = allPizzas[index].id
-                if counters[itemId] == nil {
-                    counters[itemId] = PizzaCounter()
+            
+            private func decrementCounter(for item: Items) {
+                if let index = allPizzas.firstIndex(of: item) {
+                    let itemId = allPizzas[index].id
+                    if counters[itemId] == nil {
+                        counters[itemId] = PizzaCounter()
+                    }
+                    counters[itemId]?.count -= 1
                 }
-                counters[itemId]?.count -= 1
             }
-        }
+
         
         private func getCounter(for item: Items) -> Int {
             if let index = allPizzas.firstIndex(of: item) {

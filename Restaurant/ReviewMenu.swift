@@ -2,11 +2,10 @@ import SwiftUI
 
 struct ReviewMenu: View {
     @Environment(\.presentationMode) var presentationMode
-    
+    var selectedPizzaCounter: PizzaCounter
     
     var body: some View {
         VStack(alignment: .center){
-            
             Button(action: {
                 presentationMode.wrappedValue.dismiss()
             }, label: {
@@ -22,6 +21,11 @@ struct ReviewMenu: View {
                 .font(.title2)
                 .position(CGPoint(x: 200, y: -350))
             
+            ForEach(selectedPizzaCounter.selectedItems, id: \.self) { item in
+                            HStack {
+                                Text("\(selectedPizzaCounter.selectedItems[0])")
+                            }
+                        }
             
         }.background(CustomColors.typicalColor)
     }
@@ -29,6 +33,6 @@ struct ReviewMenu: View {
 
 struct ReviewMenu_Previews: PreviewProvider {
     static var previews: some View {
-        ReviewMenu()
+        ReviewMenu(selectedPizzaCounter: PizzaCounter())
     }
 }

@@ -110,7 +110,7 @@ struct FixedView: View {
             Spacer()
         }
         .fullScreenCover(isPresented: $showReviewMenu, content: {
-            ReviewMenu()
+            ReviewMenu(selectedPizzaCounter: PizzaCounter())
         })
     }
 }
