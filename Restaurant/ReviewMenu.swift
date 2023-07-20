@@ -3,13 +3,9 @@ import SwiftUI
 struct ReviewMenu: View {
     @Environment(\.presentationMode) var presentationMode
     
+    
     var body: some View {
-        ZStack{
-            
-            Image("backgroud")
-                .resizable()
-                .ignoresSafeArea()
-                .background(CustomColors.typicalColor)
+        VStack(alignment: .center){
             
             Button(action: {
                 presentationMode.wrappedValue.dismiss()
@@ -18,11 +14,16 @@ struct ReviewMenu: View {
                     .font(.title2)
                     .foregroundColor(CustomColors.navigationColor)
                     .bold()
-                    .position(CGPoint(x: 30, y: 0))
-            })
-                    
+            }).position(CGPoint(x: 30, y: 0))
             
-        }
+            
+            Text("Zoznam položiek")
+                .bold()
+                .font(.title2)
+                .position(CGPoint(x: 200, y: -350))
+            
+            
+        }.background(CustomColors.typicalColor)
     }
 }
 

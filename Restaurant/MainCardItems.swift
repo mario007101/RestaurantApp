@@ -10,6 +10,7 @@ struct Items: Identifiable, Equatable {
 
 struct PizzaCounter {
     var count = 0
+    var itemsFromCounter: [String] = []
 }
 
 struct MainCardItems: View {
@@ -19,7 +20,7 @@ struct MainCardItems: View {
     @State private var selectedPizza: Items? = nil
     @State var selectedCategory: Category = topPizza.first!
     @State private var isSelectedTopPizza = 1
-    @State private var counters: [UUID: PizzaCounter] = [:]
+    @State var counters: [UUID: PizzaCounter] = [:]
     
     var body: some View {
         VStack {
@@ -100,13 +101,13 @@ struct MainCardItems: View {
                                     }
                                     
                                     HStack {
+                                        
                                         Button(action: {
-                                            incrementCounter(for: item)
+                                            decrementCounter(for: item)
                                         }, label: {
-                                            Image(systemName: "plus")
-                                                .frame(width: 20, height: 20)
+                                            Image(systemName: "minus")
                                         })
-                                        .disabled(getCounter(for: item) == 10)
+                                        .disabled(getCounter(for: item) == 0)
                                         
                                         ZStack {
                                             Rectangle()
@@ -119,11 +120,13 @@ struct MainCardItems: View {
                                         }
                                         
                                         Button(action: {
-                                            decrementCounter(for: item)
+                                            incrementCounter(for: item)
                                         }, label: {
-                                            Image(systemName: "minus")
+                                            Image(systemName: "plus")
+                                                .frame(width: 20, height: 20)
                                         })
-                                        .disabled(getCounter(for: item) == 0)
+                                        .disabled(getCounter(for: item) == 10)
+                                        
                                     }
                                     .foregroundColor(Color.white)
                                     .frame(width: 20, height: 20)
@@ -166,15 +169,16 @@ struct MainCardItems: View {
                                         
                                         
                                     }
+                        
                                     
                                     HStack {
+                                        
                                         Button(action: {
-                                            incrementCounter(for: item)
+                                            decrementCounter(for: item)
                                         }, label: {
-                                            Image(systemName: "plus")
-                                                .frame(width: 20, height: 20)
+                                            Image(systemName: "minus")
                                         })
-                                        .disabled(getCounter(for: item) == 10)
+                                        .disabled(getCounter(for: item) == 0)
                                         
                                         ZStack {
                                             Rectangle()
@@ -187,17 +191,18 @@ struct MainCardItems: View {
                                         }
                                         
                                         Button(action: {
-                                            decrementCounter(for: item)
+                                            incrementCounter(for: item)
                                         }, label: {
-                                            Image(systemName: "minus")
+                                            Image(systemName: "plus")
+                                                .frame(width: 20, height: 20)
                                         })
-                                        .disabled(getCounter(for: item) == 0)
+                                        .disabled(getCounter(for: item) == 10)
                                     }
                                     .foregroundColor(Color.white)
                                     .frame(width: 20, height: 20)
 
                                 }
-                                
+                            
                                 Divider()
                             }
                         }
@@ -238,6 +243,7 @@ struct MainCardItems: View {
                 }
                 return counters[itemId]?.count ?? 0
             }
+            
             return 0
         }
 }
@@ -249,7 +255,7 @@ struct MainCardItems_Previews: PreviewProvider {
 }
 
 //Have to add some more items
-extension Items {
+extension Items: Hashable {
     static let pizzaStick = Items(name: "Pizza tyčinky", gram: 350, price: 3.8, ingredients: ["cesnak,", "olivový olej"])
     static let margharita = Items(name: "Margharita", gram: 580, price: 5.5, ingredients: ["paradajková omáčka,", "syr"])
     static let sunkova = Items(name: "Šunková", gram: 640, price: 5.9, ingredients: ["paradajková omáčka,", "syr,", "šunka"])
