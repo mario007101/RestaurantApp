@@ -242,17 +242,27 @@ struct MainCardItems: View {
             }
 
         
-        private func getCounter(for item: Items) -> Int {
-            if let index = allPizzas.firstIndex(of: item) {
-                let itemId = allPizzas[index].id
-                if counters[itemId] == nil {
-                    counters[itemId] = PizzaCounter() 
+    private func getCounter(for item: Items) -> Int {
+        if let index = allPizzas.firstIndex(of: item) {
+            let itemId = allPizzas[index].id
+            if counters[itemId] == nil {
+                counters[itemId] = PizzaCounter()
+            }
+            let count = counters[itemId]?.count ?? 0
+            
+            // If count becomes 1, add the item name to selectedItems array
+            if count == 1 {
+                if !selectedPizzaCounter.selectedItems.contains(item.name) {
+                    selectedPizzaCounter.selectedItems.append(item.name)
                 }
-                return counters[itemId]?.count ?? 0
             }
             
-            return 0
+            return count
         }
+        
+        return 0
+    }
+    
 }
 
 struct MainCardItems_Previews: PreviewProvider {

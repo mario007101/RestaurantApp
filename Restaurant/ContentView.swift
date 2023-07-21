@@ -9,8 +9,7 @@ struct ContentView: View {
             VStack{
                 
                 HStack {
-                    TopBar(isClicked: $isClicked)
-                        
+                    TopBar(isClicked: $isClicked)                        
                 }
  
                 if isClicked == false {

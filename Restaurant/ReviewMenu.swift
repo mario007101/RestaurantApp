@@ -21,9 +21,12 @@ struct ReviewMenu: View {
                 .font(.title2)
                 .position(CGPoint(x: 200, y: -350))
             
+            //Here trying to display items from struct PizzaCounter.selectedItems
             ForEach(selectedPizzaCounter.selectedItems, id: \.self) { item in
                             HStack {
-                                Text("\(selectedPizzaCounter.selectedItems[0])")
+                                Text(item)
+                                    .foregroundColor(.red)
+                                    .background(.blue)
                             }
                         }
             
