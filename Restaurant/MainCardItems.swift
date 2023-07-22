@@ -102,6 +102,7 @@ struct MainCardItems: View {
                                         
                                     }
                                     
+                                    
                                     HStack {
                                         
                                         Button(action: {
@@ -192,20 +193,18 @@ struct MainCardItems: View {
                                         
                                         Button(action: {
                                             incrementCounter(for: item)
+                                            
                                         }, label: {
                                             Image(systemName: "plus")
                                                 .frame(width: 20, height: 20)
                                         })
                                         .disabled(getCounter(for: item) == 10)
-                                        
-                                        
-                                        
                                     }
                                     .foregroundColor(Color.white)
                                     .frame(width: 20, height: 20)
-
+                                    
                                 }
-                            
+                                
                                 Divider()
                             }
                         }
@@ -250,11 +249,8 @@ struct MainCardItems: View {
             }
             let count = counters[itemId]?.count ?? 0
             
-            // If count becomes 1, add the item name to selectedItems array
             if count == 1 {
-                if !selectedPizzaCounter.selectedItems.contains(item.name) {
                     selectedPizzaCounter.selectedItems.append(item.name)
-                }
             }
             
             return count
